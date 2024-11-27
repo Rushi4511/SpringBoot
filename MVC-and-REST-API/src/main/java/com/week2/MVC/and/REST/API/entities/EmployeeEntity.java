@@ -1,4 +1,5 @@
 package com.week2.MVC.and.REST.API.entities;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,29 +29,30 @@ public class EmployeeEntity {
 
     private LocalDate dateOfJoining;
 
+    @JsonProperty("active")
     private Boolean isActive;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public LocalDate getDateOfJoining() {
-        return dateOfJoining;
-    }
-
-    public Boolean getActive() {
-        return isActive;
-    }
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public Integer getAge() {
+//        return age;
+//    }
+//
+//    public LocalDate getDateOfJoining() {
+//        return dateOfJoining;
+//    }
+//
+//    public Boolean getActive() {
+//        return isActive;
+//    }
 }
