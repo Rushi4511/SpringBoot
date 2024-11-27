@@ -29,8 +29,12 @@ public class EmployeeEntity {
 
     private LocalDate dateOfJoining;
 
-    @JsonProperty("active")
+    @JsonProperty("isActive")
     private Boolean isActive;
+
+    private String role;
+
+    private Double salary;
 
 //    public Long getId() {
 //        return id;

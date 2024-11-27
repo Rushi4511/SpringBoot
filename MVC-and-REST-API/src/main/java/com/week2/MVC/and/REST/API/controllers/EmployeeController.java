@@ -3,6 +3,7 @@ package com.week2.MVC.and.REST.API.controllers;
 import com.week2.MVC.and.REST.API.dto.EmployeeDTO;
 import com.week2.MVC.and.REST.API.entities.EmployeeEntity;
 import com.week2.MVC.and.REST.API.services.Employeeservice;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -106,14 +107,14 @@ public class EmployeeController {
 
     //1.3
     @PostMapping
-    public ResponseEntity<EmployeeDTO> createNewEmployee(@RequestBody EmployeeDTO inputEmployee){
+    public ResponseEntity<EmployeeDTO> createNewEmployee(@RequestBody @Valid EmployeeDTO inputEmployee){
 
         EmployeeDTO savedEmployee = employeeservice.createNewEmployee(inputEmployee);
         return new ResponseEntity<EmployeeDTO>(savedEmployee, HttpStatus.CREATED);
     }
 
     @PutMapping(path ="/{employeeId}")
-    public ResponseEntity<EmployeeDTO> updateEmployeeById(@RequestBody EmployeeDTO employeeDTO, @PathVariable Long employeeId){
+    public ResponseEntity<EmployeeDTO> updateEmployeeById(@RequestBody @Valid  EmployeeDTO employeeDTO, @PathVariable Long employeeId){
         return ResponseEntity.ok(employeeservice.updateEmployeeById(employeeId,employeeDTO));
     }
 
