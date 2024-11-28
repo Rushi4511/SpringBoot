@@ -2,16 +2,14 @@ package com.week2.MVC.and.REST.API.controllers;
 
 import com.week2.MVC.and.REST.API.dto.EmployeeDTO;
 import com.week2.MVC.and.REST.API.entities.EmployeeEntity;
+import com.week2.MVC.and.REST.API.exceptions.ResourceNotFoundException;
 import com.week2.MVC.and.REST.API.services.Employeeservice;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 @RequestMapping(path ="/employees")
@@ -56,8 +54,26 @@ public class EmployeeController {
     @GetMapping(path ="/{employeeId}")
     public ResponseEntity<EmployeeDTO> getEmployeeById(@PathVariable(name="employeeId") Long id){
         Optional<EmployeeDTO> employeeDTO = employeeservice.getEmployeeById(id);
-        return employeeDTO.map(employeeDTO1 -> ResponseEntity.ok(employeeDTO1)).orElse(ResponseEntity.notFound().build());
+//2.6.1        return employeeDTO.map(employeeDTO1 -> ResponseEntity.ok(employeeDTO1))
+//                .orElse(ResponseEntity
+//                .notFound()
+//                .build());
+
+        return employeeDTO.map(EmployeeDTO1->ResponseEntity.ok(EmployeeDTO1))
+                .orElseThrow(() -> new ResourceNotFoundException("Employee Not Found with ID"+id));
     }
+
+    //2.7.1.1
+//    @ExceptionHandler(NoSuchElementException.class)
+//    public String handleEmployeeNotFound(NoSuchElementException exception){
+//        return "EMployee Not FOUND EXCEPTION";
+//    }
+
+    //2.7.1.2
+//    @ExceptionHandler(NoSuchElementException.class)
+//    public ResponseEntity<String> handleEmployeeNotFound(NoSuchElementException exception){
+//        return new ResponseEntity<>("EMPLOYEE NOT FOUND",HttpStatus.NOT_FOUND);
+//    }
 
 //   1.1
 //    @GetMapping(path = "employees")

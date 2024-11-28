@@ -3,6 +3,7 @@ package com.week2.MVC.and.REST.API.services;
 
 import com.week2.MVC.and.REST.API.dto.EmployeeDTO;
 import com.week2.MVC.and.REST.API.entities.EmployeeEntity;
+import com.week2.MVC.and.REST.API.exceptions.ResourceNotFoundException;
 import com.week2.MVC.and.REST.API.repositories.EmployeeRepository;
 import org.apache.el.util.ReflectionUtil;
 import org.modelmapper.ModelMapper;
@@ -53,6 +54,9 @@ public class Employeeservice {
 
     public EmployeeDTO updateEmployeeById(Long employeeId, EmployeeDTO employeeDTO) {
 
+//        boolean exists =isExistsByEmployeeId(employeeId);
+//        if(!exists) throw new ResourceNotFoundException("Employee Not Found with ID"+employeeId);
+        isExistsByEmployeeId(employeeId);
         EmployeeEntity employeeEntity =modelMapper.map(employeeDTO, EmployeeEntity.class);
         employeeEntity.setId(employeeId);
         EmployeeEntity savedEmployeeEntity =employeeRepository.save(employeeEntity);
@@ -60,20 +64,25 @@ public class Employeeservice {
     }
 
     public boolean isExistsByEmployeeId(Long employeeId){
-        return employeeRepository.existsById(employeeId);
+
+        boolean exists =isExistsByEmployeeId(employeeId);
+        if(!exists) throw new ResourceNotFoundException("Employee Not Found with ID"+employeeId);
+//        return employeeRepository.existsById(employeeId);
+        return true;
     }
 
     public void deleteEmployeeById(Long employeeId) {
 
 //        boolean exists =isExistsByEmployeeId(employeeId);
 //        if(!exists) return false;
+          isExistsByEmployeeId(employeeId);
           employeeRepository.deleteById(employeeId);
 //        return true;
     }
 
     public EmployeeDTO updatePartialEmployeeById(Long employeeId, Map<String, Object> updates) {
-        boolean exists =isExistsByEmployeeId(employeeId);
-        if(!exists) return null;
+        isExistsByEmployeeId(employeeId);
+//        if(!exists) return null;
 
         EmployeeEntity employeeEntity =employeeRepository.findById(employeeId).get();
 
