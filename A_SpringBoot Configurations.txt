@@ -1,14 +1,23 @@
+//By default name of Project
+
 spring.application.name=Hibernate_And_SpringJPA
 
 
-spring.jpa.hibernate.ddl-auto=create
+//JPA Configurations
+
+spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 
 
-spring.datasource.url=jdbc:mysql://localhost:3306/Hibernate?useSSL=false
+//MySQL Connectivity
+
+spring.datasource.username.url=jdbc:mysql://localhost:3306/Hibernate
 spring.datasource.username=root
 spring.datasource.password=4545
+
+
+//Send Query from Project
 
 spring.jpa.defer-datasource-initialization=true
 spring.sql.init.mode=always

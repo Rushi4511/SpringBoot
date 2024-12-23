@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.rushi</groupId>
-	<artifactId>user</artifactId>
+	<artifactId>Bean_And_Dependency_Injection</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>user</name>
 	<description>User Management for Practice</description>
