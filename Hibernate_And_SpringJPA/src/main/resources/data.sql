@@ -1,5 +1,22 @@
-
-INSERT INTO Hibernate.product_table(price ,quantity ,sku ,title_x )VALUES(12.4,4,'rushi123','ParleBiscuit'),(14.4,1,'rushi456','Monaco'),(16.4,10,'rushi789','Bourbon');
-
-
-
+INSERT INTO Hibernate.product_table(price, quantity, sku, title_x)
+VALUES
+(11.5, 20, 'rushi001', 'Little Heart'),
+(9.99, 50, 'rushi002','Good Day '),
+(20.0, 30, 'rushi003','Oreo'),
+(15.75, 15, 'rushi004', 'Little Hearts'),
+(18.5, 8, 'rushi005', 'Britannia'),
+(10.0, 25, 'rushi006', 'Tiffin'),
+(5.5, 100, 'rushi007', 'Jim Jam'),
+(22.3, 18, 'rushi008', 'Treat'),
+(17.8, 12, 'rushi009', 'ParleG'),
+(23.0, 40, 'rushi010', 'Munch'),
+(19.0, 45, 'rushi011', 'Kit Kat'),
+(13.9, 35, 'rushi012', 'Hide&Seek Choco'),
+(8.8, 10, 'rushi013', 'Milk Bikis'),
+(25.5, 50, 'rushi014', 'Cadbury Dairy Milk'),
+(16.0, 60, 'rushi015', 'Perk'),
+(21.0, 28, 'rushi016', 'Snack Pack'),
+(27.3, 20, 'rushi017', 'Crunchie'),
+(24.1, 22, 'rushi018', 'Bourbon Cookies'),
+(14.2, 12, 'rushi019', 'Fruit Biscuit'),
+(11.8, 16, 'rushi020', 'Choco Pie');
