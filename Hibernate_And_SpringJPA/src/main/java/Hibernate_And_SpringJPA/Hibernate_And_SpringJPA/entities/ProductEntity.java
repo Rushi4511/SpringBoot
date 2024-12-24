@@ -1,10 +1,7 @@
 package Hibernate_And_SpringJPA.Hibernate_And_SpringJPA.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -13,9 +10,12 @@ import java.time.LocalDateTime;
 
 
 @Data
+
+@Builder
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Entity
 @Table(
         name = "product_table",
@@ -28,7 +28,7 @@ import java.time.LocalDateTime;
                 @Index(name = "sku_index",columnList = "sku")
         }
 )
-public class Product {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +49,6 @@ public class Product {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
-
 
 
 }
