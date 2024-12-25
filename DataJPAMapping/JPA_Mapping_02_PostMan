@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "60e65ad6-8e3c-4eab-a936-0287e7e3d967",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36572998"
+	},
+	"item": [
+		{
+			"name": "Get Employees ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/employees/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Departments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Assigned Manager",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments/assignedDepartmentOfManager/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments",
+						"assignedDepartmentOfManager",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Freelancers Department",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments/assignedDepartmentOfWorkers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments",
+						"assignedDepartmentOfWorkers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Rushi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/employees",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Departments",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Departments",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments/1/manager/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments",
+						"1",
+						"manager",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Assigned Worker To Department",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments/1/worker/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments",
+						"1",
+						"worker",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Freelancers",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/departments/1/freelancer/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"departments",
+						"1",
+						"freelancer",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
