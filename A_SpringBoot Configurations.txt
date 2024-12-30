@@ -12,7 +12,7 @@ spring.jpa.properties.hibernate.format_sql=true
 
 //MySQL Connectivity
 
-spring.datasource.username.url=jdbc:mysql://localhost:3306/Hibernate
+spring.datasource.url=jdbc:mysql://localhost:3306/Hibernate
 spring.datasource.username=root
 spring.datasource.password=4545
 
