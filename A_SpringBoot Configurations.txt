@@ -23,3 +23,13 @@ spring.jpa.defer-datasource-initialization=true
 spring.sql.init.mode=always
 spring.sql.init.data-locations=classpath:data.sql
 
+
+//Useful Configurations for Dev-Tools
+
+spring.devtools.restart.enabled = false
+spring.devtools.restart.exclude=static/**,public/**
+spring.devtools.restart.pollInterval=20
+spring.devtools.restart.quietPeriod=10
+
+
+

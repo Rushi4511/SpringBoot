@@ -61,6 +61,12 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>6.5.2.Final</version>
+		</dependency>
+
 
 
 		<dependency>
