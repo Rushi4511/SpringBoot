@@ -941,3 +941,9 @@ Caused by: java.lang.ClassNotFoundException: com.prod.springboot_production_read
 2025-01-01 13:24:60.606 [INFO] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default' 
 2025-01-01 13:24:60.609 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated... 
 2025-01-01 13:24:62.627 [INFO] com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed. 
+2025-01-01 13:30:81.812 [INFO] org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification) 
+2025-01-01 13:30:84.845 [INFO] org.springframework.boot.web.embedded.tomcat.GracefulShutdown [Thread-21] Commencing graceful shutdown. Waiting for active requests to complete 
+2025-01-01 13:30:86.869 [INFO] org.springframework.boot.web.embedded.tomcat.GracefulShutdown [tomcat-shutdown] Graceful shutdown complete 
+2025-01-01 13:30:87.873 [INFO] org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [Thread-21] Closing JPA EntityManagerFactory for persistence unit 'default' 
+2025-01-01 13:30:87.875 [INFO] com.zaxxer.hikari.HikariDataSource [Thread-21] HikariPool-7 - Shutdown initiated... 
+2025-01-01 13:30:89.899 [INFO] com.zaxxer.hikari.HikariDataSource [Thread-21] HikariPool-7 - Shutdown completed. 

@@ -28,30 +28,49 @@ public class EmployeeClientImpl implements EmployeeClient {
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
+        log.info("Info executing");
+        log.debug("I am Debuging before try");
         try {
             log.warn("This Code is executing");
             ApiResponse<List<EmployeeDTO>> employeeDTOList = restClient
                     .get()
                     .uri("employees")
                     .retrieve()
+                    .onStatus(HttpStatusCode::is4xxClientError,(req,res)->{
+//                        System.out.println(new String((res.getBody().readAllBytes())));
+                        log.error("is4xxClientError:Occurred in getAllEmployees{}",new String(res.getBody().readAllBytes()));
+                        throw new ResourceNotFoundException("Could Not Create the Employee");
+                    })
                     .body(new ParameterizedTypeReference<>() {}) ;
 
+            log.info("Success in Getting all Employees Data");
             return employeeDTOList.getData();
 
+
         } catch (Exception e) {
+            log.error("I am in Errors");
             throw new RuntimeException(e);
         }
     }
 
     @Override
     public EmployeeDTO getEmployeeByID(Long employeeId) {
+        log.info("Info executing");
+        log.debug("I am Debuging before try");
         try{
+            log.warn("This Code is executing");
 
             ApiResponse<EmployeeDTO> employeeResponse = restClient.get()
                     .uri("employees/{employeeId}",employeeId)
                     .retrieve()
+                    .onStatus(HttpStatusCode::is4xxClientError,(req,res)->{
+//                        System.out.println(new String((res.getBody().readAllBytes())));
+                        log.error("is4xxClientError:Occurred in getAllEmployeesBYId{}",new String(res.getBody().readAllBytes()));
+                        throw new ResourceNotFoundException("Could Not Create the Employee");
+                    })
                     .body(new ParameterizedTypeReference<>() {});
 
+            log.info("Success in Getting  Employees Data By ID");
             return employeeResponse.getData();
 
         }catch (Exception e){
@@ -61,19 +80,24 @@ public class EmployeeClientImpl implements EmployeeClient {
 
     @Override
     public EmployeeDTO createNewEmployee(EmployeeDTO employeeDTO) {
+
+        log.info("Info executing");
+        log.debug("I am Debuging before try");
         try{
+            log.warn("This Code is executing");
 
             ResponseEntity<ApiResponse<EmployeeDTO>> employeeDTOApiResponse =restClient.post()
                     .uri("employees")
                     .body(employeeDTO)
                     .retrieve()
                     .onStatus(HttpStatusCode::is4xxClientError,(req,res)->{
-                        System.out.println(new String((res.getBody().readAllBytes())));
+                        log.error("is4xxClientError:Occurred in getAllEmployeesBYId : {}",new String(res.getBody().readAllBytes()));
                         throw new ResourceNotFoundException("Could Not Create the Employee");
                     })
                     .toEntity(new ParameterizedTypeReference<>() {
                     });
 
+            log.info("Success in Creating Employee Data By ID");
             return employeeDTOApiResponse.getBody().getData();
 
 
