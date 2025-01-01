@@ -32,4 +32,55 @@ spring.devtools.restart.pollInterval=20
 spring.devtools.restart.quietPeriod=10
 
 
+employeeService.base.url=http://localhost:8181/
+
+
+#Setting Log Levels:
+#logging.level.com.prod.springboot_production_ready.clients=DEBUG
+#logging.level.root=TRACE
+
+
+
+
+//Actuator COnfiguration
+
+management.endpoints.web.exposure.include=*
+management.info.env.enabled=true
+info.app.author=Rushi Bhaiya
+info.app.version=1.0.0
+info.app.documentation=https://codingshuttle.com/docs
+management.endpoint.env.show-values=always
+#management.info.build.enabled=true
+#management.info.git.enabled=true
+#management.info.java.enabled=true
+#management.info.os.enabled=true
+
+
+
+employeeService.base.url=http://localhost:8181/
+
+
+##Setting Log Levels:
+#logging.level.com.prod.springboot_production_ready.clients=DEBUG
+#logging.level.root=INFO
+
+
+
+##Log formatters
+#logging.pattern.console=%d[%level] %C{3.} [%t] %m %n
+
+#Log Handlers
+
+#TO SET FILE NAME
+
+
+
+#TO SET PATTERN FOR THE LOG FILE
+#logging.pattern.file=%clr(%d{yyyy-MM-dd HH:mm:SS.SSS}){blue} [%level] %C{1.} [%t] %m %n
+
+
+//Logback XML configuration
+
+logging.file.name=application.log
+logging.config=classpath:logback-spring.xml
 
