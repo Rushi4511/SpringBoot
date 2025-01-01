@@ -6,6 +6,8 @@ import com.prod.springboot_production_ready.clients.EmployeeClient;
 import com.prod.springboot_production_ready.dto.EmployeeDTO;
 import com.prod.springboot_production_ready.excpetions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -20,10 +22,14 @@ public class EmployeeClientImpl implements EmployeeClient {
 
     private final RestClient restClient;
 
+    Logger log = LoggerFactory.getLogger(EmployeeClientImpl.class);
+
+
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
         try {
+            log.warn("This Code is executing");
             ApiResponse<List<EmployeeDTO>> employeeDTOList = restClient
                     .get()
                     .uri("employees")
@@ -57,8 +63,9 @@ public class EmployeeClientImpl implements EmployeeClient {
     public EmployeeDTO createNewEmployee(EmployeeDTO employeeDTO) {
         try{
 
-            ResponseEntity<ApiResponse<EmployeeDTO>> employeeDTOApiResponse =restClient.get()
+            ResponseEntity<ApiResponse<EmployeeDTO>> employeeDTOApiResponse =restClient.post()
                     .uri("employees")
+                    .body(employeeDTO)
                     .retrieve()
                     .onStatus(HttpStatusCode::is4xxClientError,(req,res)->{
                         System.out.println(new String((res.getBody().readAllBytes())));
@@ -71,6 +78,7 @@ public class EmployeeClientImpl implements EmployeeClient {
 
 
         }catch (Exception e){
+
             throw new RuntimeException(e);
         }
     }

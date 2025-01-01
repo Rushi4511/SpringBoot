@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -45,13 +47,15 @@ class SpringbootProductionReadyApplicationTests {
 	@Order(2)
 	void createNewEmployee(){
 		EmployeeDTO createdEmployee =EmployeeDTO.builder()
-				.id(1L)
-				.age(22)
-				.email("rushikarle45@gmail.com")
-				.name("Rushi")
+				.age(23)
+				.email("bhusham@gmail.com")
+				.name("Bhushan")
 				.isActive(true)
+				.role("USER")
+				.salary(100000.0)
+				.dateOfJoining(LocalDate.now())
 				.build();
-		System.out.println(createdEmployee);
+		System.out.println(employeeClient.createNewEmployee(createdEmployee));
 
 	}
 
