@@ -10,11 +10,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SpringSecurityApplicationTests {
 
 
+	@Autowired
+	private JWTService jwtService;
+
+
 
 	@Test
 	void contextLoads() {
 
+		User user = new User();
 
+		String token =jwtService.generateToken(user);
+
+		System.out.println(token);
+
+		Long id = jwtService.getUserIdFromToken(token);
+
+		System.out.println(id);
 
 	}
 
