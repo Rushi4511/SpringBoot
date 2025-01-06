@@ -18,10 +18,10 @@ class SpringSecurityApplicationTests {
 	@Test
 	void contextLoads() {
 
-		User user = new User();
-		user.setId(1L);
-		user.setEmail("rushikarle45@gmail.com");
-		user.setPassword("rushi123");
+		User user = new User(1L,"rushikarle45@gmail.com","rushi123",null);
+//		user.setId(1L);
+//		user.setEmail("rushikarle45@gmail.com");
+//		user.setPassword("rushi123");
 
 
 
@@ -31,8 +31,8 @@ class SpringSecurityApplicationTests {
 
 		System.out.println(token);
 
-		Long id = jwtService.getUserIdFromToken(token);
-
+		Long id = jwtService.getUserIdFromToken("eyJhbGciOiJIUzUxMiJ9." +
+		  "eyJzdWIiOiIxIiwiZW1haWwiOiJydUBnbWFpbC5jb20iLCJyb2xlcyI6WyJVU0VSIiwiQURNSU4iXSwiaWF0IjoxNzM2MTc4NjE2LCJleHAiOjE3MzYxNzg2NzZ9.rSZnj0TINd52BpLQ4m0ontSbTkchTvBMb_79B3PuRTXzxUn2WM9IXuOnt-sOCx2nr-SJjmFp6--NAZPyaxd5BA");
 		System.out.println(id);
 
 	}
