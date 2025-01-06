@@ -27,6 +27,8 @@ public class JWTService {
 
     public String generateToken(User user){
 
+        System.out.println(user.getId());
+
         return Jwts.builder()
                 .subject(user.getId().toString())
                 .claim("email",user.getEmail())
@@ -45,7 +47,7 @@ public class JWTService {
         Claims claims = Jwts.parser()
                 .verifyWith(getSecretKey())
                 .build()
-                .parseEncryptedClaims(token)
+                .parseSignedClaims(token)
                 .getPayload();
 
         return Long.valueOf(claims.getSubject());

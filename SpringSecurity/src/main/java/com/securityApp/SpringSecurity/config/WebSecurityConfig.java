@@ -1,5 +1,6 @@
 package com.securityApp.SpringSecurity.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -20,6 +21,8 @@ import java.security.Security;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+
+    @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 
         /*httpSecurity
