@@ -24,21 +24,32 @@ public class JWTService {
         );
     }
 
-
-    public String generateToken(User user){
-
-        System.out.println(user.getId());
+    //  Generating Access Token
+    public String generateAccessToken(User user){
 
         return Jwts.builder()
                 .subject(user.getId().toString())
                 .claim("email",user.getEmail())
                 .claim("roles", Set.of("ADMIN","USER"))
                 .issuedAt(new Date())
-                .expiration(new Date(System.currentTimeMillis()+ 1000*60))
+                .expiration(new Date(System.currentTimeMillis()+ 1000L*60))
                 .signWith(getSecretKey())
                 .compact();
 
     }
+    //  Generating Refresh Token
+    public String generateRefreshToken(User user){
+
+
+        return Jwts.builder()
+                .subject(user.getId().toString())
+                .issuedAt(new Date())
+                .expiration(new Date(System.currentTimeMillis()+ 1000L*60*60*24*30*6))
+                .signWith(getSecretKey())
+                .compact();
+
+    }
+
 
 
 
