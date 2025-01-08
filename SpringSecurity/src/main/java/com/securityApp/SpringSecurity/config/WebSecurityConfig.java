@@ -14,6 +14,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -69,15 +70,15 @@ public class WebSecurityConfig {
 
         httpSecurity
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/posts/**","/auth/**","/home.html/**").permitAll()
+                        .requestMatchers("/posts/**","/auth/**","/home.html").permitAll()
                         //.requestMatchers("/post/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated())
-                .csrf(csrfConfig->csrfConfig.disable())
+                .csrf(AbstractHttpConfigurer::disable)
                     .sessionManagement(sessionConfig ->sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .oauth2Login(oauth2LoginConfig -> oauth2LoginConfig
                         .failureUrl("/login?error=true")
-//                        .successHandler(oAuth2SuccessHandler)
+                        .successHandler(oAuth2SuccessHandler)
                 );
 
                 //.formLogin(Customizer.withDefaults());
