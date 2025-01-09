@@ -32,9 +32,9 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDTO getPostById(Long id) {
 
-        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        log.info("User {}",SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+//        User user =(User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//
+//        log.info("User {}",SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 
  //       log.info("",(User)SecurityContextHolder.getContext().getAuthentication().getPrincipal());
 

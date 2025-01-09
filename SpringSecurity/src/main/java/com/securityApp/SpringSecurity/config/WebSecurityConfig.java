@@ -1,5 +1,6 @@
 package com.securityApp.SpringSecurity.config;
 
+import com.securityApp.SpringSecurity.enums.Role;
 import com.securityApp.SpringSecurity.filters.JwtAuthFilter;
 import com.securityApp.SpringSecurity.handler.OAuth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.Customizer;
@@ -27,6 +29,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import java.security.Security;
 
+import static com.securityApp.SpringSecurity.enums.Role.ADMIN;
+import static com.securityApp.SpringSecurity.enums.Role.CREATOR;
+
 
 @Configuration
 @EnableWebSecurity
@@ -37,6 +42,10 @@ public class WebSecurityConfig {
 
     @Autowired
     private OAuth2SuccessHandler oAuth2SuccessHandler;
+
+    private static final String[] publicRoutes = {
+            "/error", "/auth/**", "/home.html"
+    };
 
 
     @Bean
@@ -70,7 +79,9 @@ public class WebSecurityConfig {
 
         httpSecurity
                 .authorizeHttpRequests(auth->auth
-                        .requestMatchers("/posts/**","/auth/**","/home.html").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/posts/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,"/posts/**").hasAnyRole(ADMIN.name(),CREATOR.name())
+                        .requestMatchers(publicRoutes).permitAll()
                         //.requestMatchers("/post/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)

@@ -21,6 +21,7 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
     private final JWTService jwtService;
     private final UserService userService;
+    private final SessionService sessionService;
 
 
     public LoginResponseDto login(@RequestBody LoginDto loginDto){
@@ -38,6 +39,8 @@ public class AuthService {
 
         String refreshToken = jwtService.generateRefreshToken(user);
 
+        sessionService.generateNewSession(user,refreshToken);
+
 
 
 //        Cookie cookie=new Cookie("token",token);
@@ -54,6 +57,8 @@ public class AuthService {
     public LoginResponseDto refreshToken(String refreshToken) {
 
         Long userId = jwtService.getUserIdFromToken(refreshToken);
+
+        sessionService.validateSession(refreshToken);
 
         User user = userService.getUserById(userId);
 
