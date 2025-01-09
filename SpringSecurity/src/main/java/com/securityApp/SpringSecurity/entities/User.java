@@ -1,5 +1,6 @@
 package com.securityApp.SpringSecurity.entities;
 
+import com.securityApp.SpringSecurity.enums.Permission;
 import com.securityApp.SpringSecurity.enums.Role;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,12 +36,27 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<Permission> permissions;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_"+role.name()))
+//        return roles.stream()
+//                .map(role -> new SimpleGrantedAuthority("ROLE_"+role.name()))
+//                .collect(Collectors.toSet());
+
+        Set<SimpleGrantedAuthority> authorities =roles.stream()
+                .map(role->new SimpleGrantedAuthority(
+                        "ROLE_"+role.name()
+                ))
                 .collect(Collectors.toSet());
+
+        permissions.forEach(permission -> authorities.add(new SimpleGrantedAuthority(permission.name())));
+
+        return authorities;
     }
 
     @Override
