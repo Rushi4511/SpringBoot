@@ -81,6 +81,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers(HttpMethod.GET,"/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/posts/**").hasAnyRole(ADMIN.name(),CREATOR.name())
+                        .requestMatchers(HttpMethod.PUT,"/posts/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE,"/posts/**").permitAll()
                         .requestMatchers(publicRoutes).permitAll()
                         //.requestMatchers("/post/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated())
