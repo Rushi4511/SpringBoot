@@ -22,6 +22,7 @@ public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;
 
+
     @Override
     public List<PostDTO> getAllPosts() {
 
@@ -58,8 +59,14 @@ public class PostServiceImpl implements PostService {
     @Override
     public PostDTO createNewPost(PostDTO toCreatePostDto) {
 
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+
         PostEntity createPostEntity =modelMapper.map(toCreatePostDto,PostEntity.class);
+        createPostEntity.setAuthor(user);
         PostEntity savedPostEntity =postRepository.save(createPostEntity);
+
+
         return modelMapper.map(savedPostEntity,PostDTO.class);
     }
 }

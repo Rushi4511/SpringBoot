@@ -1,17 +1,21 @@
 package com.securityApp.SpringSecurity.advices;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class ApiError {
 
     private LocalDateTime timeStamp;
     private String error;
     private HttpStatus statusCode;
 
+    /*
     public ApiError() {
         this.timeStamp = LocalDateTime.now();
     }
@@ -21,4 +25,6 @@ public class ApiError {
         this.error = error;
         this.statusCode = statusCode;
     }
+
+     */
 }
