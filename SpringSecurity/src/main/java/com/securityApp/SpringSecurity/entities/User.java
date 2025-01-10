@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 @Setter
 @Builder
 @ToString
+@Table(name = "spring_user")
 public class User implements UserDetails {
 
     @Id
@@ -37,13 +38,6 @@ public class User implements UserDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
-
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private Set<Permission> permissions;
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

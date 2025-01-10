@@ -81,18 +81,18 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers(HttpMethod.GET,"/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST,"/posts/**").hasAnyRole(ADMIN.name(),CREATOR.name())
-                        .requestMatchers(HttpMethod.PUT,"/posts/**").permitAll()
-                        .requestMatchers(HttpMethod.DELETE,"/posts/**").permitAll()
+                        .requestMatchers(HttpMethod.PUT,"/posts/**").hasAnyRole(ADMIN.name(),CREATOR.name())
+                        .requestMatchers(HttpMethod.DELETE,"/posts/**").hasAnyRole(ADMIN.name(),CREATOR.name())
                         .requestMatchers(publicRoutes).permitAll()
                         //.requestMatchers("/post/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated())
                 .csrf(AbstractHttpConfigurer::disable)
                     .sessionManagement(sessionConfig ->sessionConfig.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .oauth2Login(oauth2LoginConfig -> oauth2LoginConfig
-                        .failureUrl("/login?error=true")
-                        .successHandler(oAuth2SuccessHandler)
-                );
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+//                .oauth2Login(oauth2LoginConfig -> oauth2LoginConfig
+//                        .failureUrl("/login?error=true")
+//                        .successHandler(oAuth2SuccessHandler)
+//                );
 
                 //.formLogin(Customizer.withDefaults());
 
