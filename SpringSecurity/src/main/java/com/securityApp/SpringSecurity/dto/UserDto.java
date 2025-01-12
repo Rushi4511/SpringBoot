@@ -1,6 +1,6 @@
 package com.securityApp.SpringSecurity.dto;
 
-import com.securityApp.SpringSecurity.enums.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,6 +17,6 @@ public class UserDto {
     private String email;
     private String name;
 
-    private Set<Role> roles;
+
 
 }

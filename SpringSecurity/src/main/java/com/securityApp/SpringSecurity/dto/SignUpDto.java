@@ -1,7 +1,6 @@
 package com.securityApp.SpringSecurity.dto;
 
-import com.securityApp.SpringSecurity.enums.Permission;
-import com.securityApp.SpringSecurity.enums.Role;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

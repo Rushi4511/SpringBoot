@@ -1,7 +1,6 @@
 package com.securityApp.SpringSecurity.services;
 
 import com.securityApp.SpringSecurity.dto.LoginDto;
-import com.securityApp.SpringSecurity.dto.LoginResponseDto;
 import com.securityApp.SpringSecurity.entities.User;
 import com.securityApp.SpringSecurity.services.impl.JWTService;
 import jakarta.servlet.http.Cookie;

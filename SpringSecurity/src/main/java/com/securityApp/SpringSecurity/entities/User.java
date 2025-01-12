@@ -1,9 +1,6 @@
 package com.securityApp.SpringSecurity.entities;
 
 //import com.securityApp.SpringSecurity.enums.Permission;
-import com.securityApp.SpringSecurity.enums.Permission;
-import com.securityApp.SpringSecurity.enums.Role;
-import com.securityApp.SpringSecurity.utils.PermissionMapping;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,9 +32,6 @@ public class User implements UserDetails {
     private String password;
     private String name;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
