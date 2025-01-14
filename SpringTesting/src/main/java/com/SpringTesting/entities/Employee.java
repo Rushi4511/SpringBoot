@@ -3,6 +3,8 @@ package com.SpringTesting.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Entity
 @Getter
 @Setter
@@ -22,4 +24,15 @@ public class Employee {
 
     private Long salary;
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(getId(), employee.getId()) && Objects.equals(getEmail(), employee.getEmail()) && Objects.equals(getName(), employee.getName()) && Objects.equals(getSalary(), employee.getSalary());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getEmail(), getName(), getSalary());
+    }
 }
