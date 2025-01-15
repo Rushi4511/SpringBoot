@@ -48,18 +48,18 @@ class EmployeeServiceImplTest {
     private EmployeeDto mockEmployeeDto;
 
 
-    @BeforeEach
-    void setUp(){
-        Long id = 1L;
-        mockEmployee = Employee.builder()
-                .id(id)
-                .email("rushi@gmail.com")
-                .name("Rushi")
-                .salary(200L)
-                .build();
-
-        mockEmployeeDto = modelMapper.map(mockEmployee,EmployeeDto.class);
-    }
+//    @BeforeEach
+//    void setUp(){
+//        Long id = 1L;
+//        mockEmployee = Employee.builder()
+//                .id(id)
+//                .email("rushi@gmail.com")
+//                .name("Rushi")
+//                .salary(200L)
+//                .build();
+//
+//        mockEmployeeDto = modelMapper.map(mockEmployee,EmployeeDto.class);
+//    }
 
 
     @Test

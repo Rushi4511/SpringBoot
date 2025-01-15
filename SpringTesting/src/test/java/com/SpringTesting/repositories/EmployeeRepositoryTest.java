@@ -24,14 +24,14 @@ public class EmployeeRepositoryTest {
 
     private Employee employee;
 
-    @BeforeEach
-    void setup() {
-        employee = Employee.builder()
-                .name("Rushi")
-                .email("rushikarle45@gmail.com")
-                .salary(100L)
-                .build();
-    }
+//    @BeforeEach
+//    void setup() {
+//        employee = Employee.builder()
+//                .name("Rushi")
+//                .email("rushikarle45@gmail.com")
+//                .salary(100L)
+//                .build();
+//    }
 
     @Test
     void testFindByEmail_whenEmailIsPresent_thenReturnEmployee() {
