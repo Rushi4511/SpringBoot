@@ -161,9 +161,15 @@ class EmployeeControllerTest {
         webTestClient.put()
                 .uri("/employees/{id}",savedEmployee.getId())
                 .bodyValue(testEmployeeDto)
-                .exchange();
+                .exchange()
+                .expectStatus().isOk()
+                .expectBody(EmployeeDto.class)
+                .isEqualTo(testEmployeeDto);
 
     }
+
+
+
 
 
 
