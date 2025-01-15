@@ -169,6 +169,43 @@ class EmployeeControllerTest {
     }
 
 
+    //  DELETE employee
+
+    //  1. When employee Doesn't exist
+
+    @Test
+    void testDeleteEmployee_whenEmployeeDoesNotExists_thenThrowException(){
+
+        webTestClient.delete()
+                .uri("/employees/1")
+                .exchange()
+                .expectStatus().isNotFound();
+
+    }
+
+
+    //  2. When employee  exist
+
+    @Test
+    void testDeleteEmployee_whenEmployeeExists_thenDeleteEmployee(){
+
+        Employee savedEmployee = employeeRepository.save(testEmployee);
+
+        webTestClient.delete()
+                .uri("/employees/{id}",savedEmployee.getId())
+                .exchange()
+                .expectStatus().isNoContent()
+                .expectBody(Void.class);
+
+        webTestClient.delete()
+                .uri("/employees/1")
+                .exchange()
+                .expectStatus().isNotFound();
+
+
+    }
+
+
 
 
 
