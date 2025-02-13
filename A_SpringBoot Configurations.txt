@@ -16,6 +16,15 @@ spring.datasource.url=jdbc:mysql://localhost:3306/Hibernate
 spring.datasource.username=root
 spring.datasource.password=4545
 
+//PostgreSQL
+
+#DB configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/demo4?useSSL=false
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 
 //Send Query from Project
 
@@ -83,4 +92,9 @@ employeeService.base.url=http://localhost:8181/
 
 logging.file.name=application.log
 logging.config=classpath:logback-spring.xml
+
+
+#Spring API docs
+
+springdoc.api-docs.title=My API Documentations
 
