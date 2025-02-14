@@ -1,13 +1,17 @@
 package com.AOP.AspectOrientedProgramming.service.impl;
 
+import com.AOP.AspectOrientedProgramming.aspects.MyLogging;
 import com.AOP.AspectOrientedProgramming.service.ShipmentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Slf4j
 public class ShipmentServiceImpl implements ShipmentService {
     @Override
+    @Transactional
+    @MyLogging
     public String orderPackage(Long orderId) {
 
         //log.info("Order Package is called");
@@ -23,6 +27,7 @@ public class ShipmentServiceImpl implements ShipmentService {
     }
 
     @Override
+
     public String trackPackage(Long orderId) {
 
         log.info("Track Package is called");
